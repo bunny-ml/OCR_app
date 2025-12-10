@@ -2,20 +2,18 @@ import torch
 from transformers import VisionEncoderDecoderModel, TrOCRProcessor
 
 class CustomTrOCR:
-    @staticmethod
-    def from_pretrained(model_path, device="cpu"):
-        """
-        Loads TrOCR model and custom LoRA/PT weights.
-        """
+	@staticmethod
+	def from_pretrained(repo_id, device="cpu"):
+    		model_path = hf_hub_download(repo_id, filename="weights.pt")  
 
-        # load base architecture
-        model = VisionEncoderDecoderModel.from_pretrained("microsoft/trocr-base-stage1")
+    		state_dict = torch.load(model_path, map_location=device)
 
-        # load custom weights
-        state_dict = torch.load(f"{model_path}/weights.pt", map_location=device)
-        model.load_state_dict(state_dict, strict=False)
+    		processor = TrOCRProcessor.from_pretrained(repo_id)
+    		model = VisionEncoderDecoderModel.from_pretrained(repo_id)
 
-        # load processor
-        processor = TrOCRProcessor.from_pretrained(model_path)
+    		model.load_state_dict(state_dict, strict=False)
+    		model.to(device)
+    		model.eval()
 
-        return model, processor
+    	return model, processor
+
