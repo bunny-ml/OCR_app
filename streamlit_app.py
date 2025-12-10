@@ -8,7 +8,7 @@ st.title("Handwriting Recognition (TrOCR + LoRA)")
 @st.cache_resource
 def load_model():
     device = "cuda" if torch.cuda.is_available() else "cpu"
-    model, processor = CustomTrOCR.from_pretrained.from_pretrained(
+    model, processor = CustomTrOCR.from_pretrained(
         "scientist-bunny/coustom_ocr_handwritten_model", 
         device=device
     )
