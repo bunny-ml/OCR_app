@@ -15,5 +15,5 @@ class CustomTrOCR:
     		model.to(device)
     		model.eval()
 
-    	return model, processor
-
+    		return model, processor
+	
