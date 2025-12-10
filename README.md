@@ -18,7 +18,7 @@ samples** extracted from a 400k+ handwriting dataset.
 
 The final model achieved:
 
--   **WER (Word Error Rate): \~0.81 at epoch 2**
+-   **WER (Word Error Rate): \~0.60 at epoch 4**
 -   **Improved stability over base TrOCR**
 -   Significantly enhanced performance on cursive and messy handwriting
 
