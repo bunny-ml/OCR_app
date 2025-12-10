@@ -12,8 +12,8 @@ class CustomTrOCR:
         state_dict = torch.load(weights_path, map_location=device)
 
         # load base model + processor
-        processor = TrOCRProcessor.from_pretrained(repo_id)
-        model = VisionEncoderDecoderModel.from_pretrained(repo_id)
+        processor = TrOCRProcessor.from_pretrained("microsoft/trocr-base-handwritten")
+        model = VisionEncoderDecoderModel.from_pretrained("microsoft/trocr-base-handwritten")
 
         # apply your weights (LoRA merged weights)
         model.load_state_dict(state_dict, strict=False)
