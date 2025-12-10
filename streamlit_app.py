@@ -1,7 +1,7 @@
 import streamlit as st
 import torch
 from PIL import Image
-from model import CustomTrOCR
+from model.model import CustomTrOCR
 
 st.title("Handwriting Recognition (TrOCR + LoRA)")
 
