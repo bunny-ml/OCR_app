@@ -1,14 +1,14 @@
 import streamlit as st
 import torch
 from PIL import Image
-from model.model import CustomTrOCR
+from model.model import from_pretrained
 
 st.title("Handwriting Recognition (TrOCR + LoRA)")
 
 @st.cache_resource
 def load_model():
     device = "cuda" if torch.cuda.is_available() else "cpu"
-    model, processor = CustomTrOCR.from_pretrained(
+    model, processor = from_pretrained.from_pretrained(
         "scientist-bunny/coustom_ocr_handwritten_model", 
         device=device
     )
